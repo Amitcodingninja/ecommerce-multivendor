@@ -1,5 +1,6 @@
 package com.amitXplode.model;
 
+import com.amitXplode.domain.HomeCategorySection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -29,12 +29,12 @@ public class Review {
 
     @JsonIgnore
     @ManyToOne
-    @Column( , nullable = false)
     private Product product;
 
-    @ManyToMany
-    @Column(,nullable = false)
+    @JsonIgnore
+    @ManyToOne(optional = false)
     private User user;
+
 
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

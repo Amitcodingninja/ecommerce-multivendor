@@ -21,4 +21,4 @@ public class Deal {
     private HomeCategory category;
 }
 
-//2:40:18
+
