@@ -25,6 +25,7 @@ public class Seller {
 
     private String password;
 
+
     @Embedded
     private BusinessDetails businessDetails = new BusinessDetails();
 

@@ -4,9 +4,7 @@ import com.amitXplode.domain.USER_ROLE;
 import com.amitXplode.model.User;
 import com.amitXplode.model.VerificationCode;
 import com.amitXplode.repository.UserRepository;
-import com.amitXplode.response.ApiResponse;
-import com.amitXplode.response.AuthResponse;
-import com.amitXplode.response.SignupRequest;
+import com.amitXplode.response.*;
 import com.amitXplode.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +33,16 @@ public class AuthController {
     }
 
     @PostMapping("/sent/login-signup-otp")
-    public ResponseEntity<ApiResponse> sendOtpHandler(@RequestBody VerificationCode req) throws Exception {
-        authService.sentLoginOtp(req.getEmail());
+    public ResponseEntity<ApiResponse> sendOtpHandler(@RequestBody LoginOtpRequest req) throws Exception {
+        authService.sentLoginOtp(req.getEmail(), req.getRole());
         ApiResponse res = new ApiResponse();
         res.setMessage("otp sent successfully");
         return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/signing")
+    public ResponseEntity<AuthResponse> loginHandler(@RequestBody LoginRequest req) throws Exception {
+        AuthResponse authResponse = authService.signin(req);
+        return ResponseEntity.ok(authResponse);
     }
 }
